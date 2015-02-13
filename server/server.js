@@ -12,7 +12,6 @@ var debug =  require('debug')('Example');
 var React = require('react');
 var app = require('../shared/app');
 var HtmlComponent = React.createFactory(require('../shared/components/Html.jsx'));
-var navigateAction = require('flux-router-component').navigateAction;
 var exposeOnWindow = require('../utils/exposeOnWindow');
 
 var server = express();

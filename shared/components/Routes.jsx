@@ -1,6 +1,12 @@
-var showChat = require('../actions/showChat');
-var showMessage = require('../actions/showMessage');
-var showThread = require('../actions/showThread');
+var Route = require('react-router').Route;
+var App = require('./App.jsx');
+/*jshint ignore:start*/
+module.exports = (
+  <Route handler={App} path='/'>
+
+  </Route>
+);
+/*jshint ignore:end*/
 
 module.exports = {
   home: {
