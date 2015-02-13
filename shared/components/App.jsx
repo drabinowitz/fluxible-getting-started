@@ -19,14 +19,23 @@ var App = React.createClass({
     this.setState(this.getStore(AppStore).getState());
   },
   render: function () {
-    return (
-      /*jshint ignore:start */
-      <div>
+    /*jshint ignore:start */
+    var primaryMessageSectionEl;
+    var showThread = false;
+    if (this.state.route.url.search(/message/g) > -1) {
+      primaryMessageSectionEl = (
         <PrimaryMessageSection />
-        <ThreadSection />
+      );
+    } else if (this.state.route.url.search(/thread/g) > -1) {
+      showThread = true;
+    }
+    return (
+      <div>
+        {primaryMessageSectionEl}
+        <ThreadSection showThread={showThread}/>
       </div>
-      /*jshint ignore:end */
     );
+    /*jshint ignore:end */
   }
 });
 
