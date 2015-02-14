@@ -5,13 +5,13 @@ var createStore = require('fluxible/utils/createStore');
 var AppStore = createStore({
   storeName: 'AppStore',
   handlers: {
-    'CHANGE_ROUTE_SUCCESS' : 'handleNavigate'
+    'DISPLAY_ROUTE' : 'displayRoute'
   },
   initialize: function (dispatcher) {
     this.currentRoute = null;
   },
-  handleNavigate: function (route) {
-    this.currentRoute = route;
+  displayRoute: function (routeToDisplay) {
+    this.currentRoute = routeToDisplay;
     this.emitChange();
   },
   getState: function () {

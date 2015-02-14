@@ -22,17 +22,15 @@ var App = React.createClass({
     /*jshint ignore:start */
     var primaryMessageSectionEl;
     var showThread = false;
-    if (this.state.route.url.search(/message/g) > -1) {
+    if (this.state.route.message) {
       primaryMessageSectionEl = (
         <PrimaryMessageSection />
       );
-    } else if (this.state.route.url.search(/thread/g) > -1) {
-      showThread = true;
     }
     return (
       <div>
         {primaryMessageSectionEl}
-        <ThreadSection showThread={showThread}/>
+        <ThreadSection showThread={this.state.route.thread}/>
       </div>
     );
     /*jshint ignore:end */

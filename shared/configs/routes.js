@@ -1,13 +1,16 @@
 var showChat = require('../actions/showChat');
 var showMessage = require('../actions/showMessage');
 var showThread = require('../actions/showThread');
+var displayRoute = require('../actions/displayRoute');
 
 module.exports = {
   home: {
     path: '/',
     method: 'get',
     action: function (context, payload, done) {
-      context.executeAction(showChat, {}, done);
+      context.executeAction(showChat, {}, function () {
+        context.executeAction(displayRoute, {}, done);
+      });
     }
   },
   message: {
@@ -16,7 +19,7 @@ module.exports = {
     action: function (context, payload, done) {
       context.executeAction(showChat, {messageId: payload.params.id}, function () {
         context.executeAction(showMessage, {messageId: payload.params.id}, function () {
-          done();
+          context.executeAction(displayRoute, {message: true}, done);
         });
       });
     }
@@ -27,7 +30,7 @@ module.exports = {
     action: function (context, payload, done) {
       context.executeAction(showChat, {threadId: payload.params.id}, function () {
         context.executeAction(showThread, {threadId: payload.params.id}, function () {
-          done();
+          context.executeAction(displayRoute, {thread: true}, done);
         });
       });
     }
