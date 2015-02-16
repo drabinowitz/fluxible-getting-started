@@ -23,7 +23,7 @@ var PrimaryMessageSection = React.createClass({
     /*jshint ignore:start*/
     var primaryMessage = this.state.primaryMessage;
     var primaryMessageEl;
-    if (primaryMessage) {
+    if (primaryMessage && this.props.currentRoute[0] === 'message') {
       primaryMessageEl = (
         <h1>{primaryMessage.text}</h1>
       );

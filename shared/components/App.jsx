@@ -19,20 +19,12 @@ var App = React.createClass({
     this.setState(this.getStore(AppStore).getState());
   },
   render: function () {
+    var route = this.state.route.url.substr(1).split('/');
     /*jshint ignore:start */
-    var primaryMessageSectionEl;
-    var showThread = false;
-    if (this.state.route.url.search(/message/g) > -1) {
-      primaryMessageSectionEl = (
-        <PrimaryMessageSection />
-      );
-    } else if (this.state.route.url.search(/thread/g) > -1) {
-      showThread = true;
-    }
     return (
       <div>
-        {primaryMessageSectionEl}
-        <ThreadSection showThread={showThread}/>
+        <PrimaryMessageSection currentRoute={route} />
+        <ThreadSection currentRoute={route} />
       </div>
     );
     /*jshint ignore:end */

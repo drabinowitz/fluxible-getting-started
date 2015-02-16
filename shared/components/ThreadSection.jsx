@@ -51,7 +51,7 @@ var ThreadSection = React.createClass({
     }.bind(this));
     var primaryThread = this.state.primaryThread;
     var MessageSectionEl
-    if (primaryThread && this.props.showThread) {
+    if (primaryThread && this.props.currentRoute[0] === 'thread') {
       MessageSectionEl = (
         <MessageSection threadId={primaryThread.id} />
       );
